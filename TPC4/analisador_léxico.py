@@ -1,8 +1,6 @@
 import re
 import ply.lex as lex
 
-
-# List of token names. This is always required
 tokens = (
     'VARIABLES',
     'PREFIX',
@@ -21,7 +19,6 @@ tokens = (
     'STRING'
 )
 
-# Regular expression rules for simple tokens (?<=\n)(?!<)(?!\n)
 t_VARIABLES = r'\?\w+'
 t_PREFIX = r'\b\w+(?=:)' 
 t_TYPE = r'(?<=:)\w+'
@@ -36,9 +33,13 @@ t_SELECT = r'select'
 t_LIMIT = r'LIMIT'
 t_LCBRCKTS = r'\{'
 t_RCBRCKTS = r'\}' 
-t_STRING = r'"[^"]+"'
 
 t_ignore = ' \t\n'
+
+def t_STRING(t):
+    r'"([^"]+)"' 
+    t.value = t.value[1:-1]
+    return t    
 
 def t_COMMENT(t):
     r'\#.*'
