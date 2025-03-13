@@ -41,6 +41,6 @@ Os tokens são divididos nas seguintes categorias:
 O lexer é construído tendo em conta cada um desses tokens, tal como as expressões regulares que os definem.
 
 <br>
-
+<br>
 
 _**Nota:** O resultado do tokenizer é observável no stdout_
